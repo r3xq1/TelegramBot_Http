@@ -1,0 +1,8 @@
+<Project>
+    <PropertyGroup>
+		<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+        <Deterministic>true</Deterministic>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <LangVersion>preview</LangVersion>
+    </PropertyGroup>
+</Project>
