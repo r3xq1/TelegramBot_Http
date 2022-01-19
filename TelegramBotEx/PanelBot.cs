@@ -10,8 +10,8 @@
         /* Справочник по боту: https://tlgrm.ru/docs/bots/api#user */
 
         // Подключение к боту
-        private const string BOT_TOKEN = @"5021266890:AAFlungHYjhR5jJJyiLuUSal_TZdtW-rahA"; // Ваш токен от бота
-        private static int LastUpdateID = 1426081573; // Ваш ID чат канала
+        private const string BOT_TOKEN = @"Token"; // Ваш токен от бота
+        private static int LastUpdateID = 0; // Ваш ID чат канала
 
         // Таймер срабатывания метода для проверки команд (в секундах)
         public static void TimeExecuteUpdate(TimeSpan ts)
