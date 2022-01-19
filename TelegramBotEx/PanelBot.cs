@@ -7,9 +7,11 @@
 
     public static class PanelBot
     {
+        /* Справочник по боту: https://tlgrm.ru/docs/bots/api#user */
+
         // Подключение к боту
-        private const string BOT_TOKEN = @"Token"; // Ваш токен от бота
-        private static int LastUpdateID = 0; // Ваш ID чат канала
+        private const string BOT_TOKEN = @"5021266890:AAFlungHYjhR5jJJyiLuUSal_TZdtW-rahA"; // Ваш токен от бота
+        private static int LastUpdateID = 1426081573; // Ваш ID чат канала
 
         // Таймер срабатывания метода для проверки команд (в секундах)
         public static void TimeExecuteUpdate(TimeSpan ts)
@@ -71,6 +73,24 @@
                 //    SendMessage("Неизвестная команда", text["message"]["chat"]["id"].AsInt);
                 //}
                 #endregion
+            }
+        }
+
+        public static void GetInfo()
+        {
+            using WebClient webClient = new();
+            string response = webClient.DownloadString($"https://api.telegram.org/bot{BOT_TOKEN}/getMe");
+            Console.WriteLine($"Результат запроса:\r\n{response}\r\n");
+            foreach (JSONNode text in SimpleJSON.Parse(response))
+            {
+                try
+                {
+                    Console.WriteLine($"ID чат канала: {text["id"].Value}");
+                    Console.WriteLine($"Оригинальное имя бота: {text["username"].Value}");
+                    Console.WriteLine($"Имя канала бота: {text["first_name"].Value}");
+                    Console.WriteLine($"Это канал бота? {(text["is_bot"].Value.Contains("true", StringComparison.CurrentCultureIgnoreCase) ? "Да" : "Нет")}");
+                }
+                catch { continue; }
             }
         }
 
